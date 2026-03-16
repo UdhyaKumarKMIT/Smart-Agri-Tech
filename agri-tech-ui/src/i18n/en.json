@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Home",
+    "cropRecommendation": "Crop Recommendation",
+    "fertilizerRecommendation": "Fertilizer Recommendation",
+    "yieldPrediction": "Yield Prediction",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "title": "Smart Agriculture Decision Support System",
+    "subtitle": "AI-powered insights for modern farming",
+    "cropBtn": "Crop Recommendation",
+    "fertilizerBtn": "Fertilizer Recommendation",
+    "yieldBtn": "Yield Prediction"
+  },
+  "about": {
+    "title": "About the Project",
+    "description": "This project uses machine learning and explainable AI (XAI) to recommend crops, fertilizers, and predict yield. By analyzing soil conditions, weather patterns, and agricultural data, our system provides intelligent, transparent, and actionable recommendations for farmers and researchers."
+  },
+  "modules": {
+    "sectionTitle": "Our Modules",
+    "cropTitle": "🌱 Crop Recommendation",
+    "cropDesc": "The Crop Recommendation module helps farmers choose the most suitable crop based on soil nutrients and environmental conditions such as temperature, rainfall, humidity, and soil pH. The system analyzes these inputs using advanced machine learning techniques and compares them with historical agricultural data. By combining the results from multiple intelligent models, it provides an accurate and reliable crop suggestion.",
+    "fertilizerTitle": "🌿 Fertilizer Recommendation",
+    "fertilizerDesc": "The Fertilizer Recommendation module suggests the most appropriate fertilizer for the selected crop based on soil nutrient levels and field conditions. The system processes soil data and crop information to determine the fertilizer that will best support plant growth. By using multiple decision-making models together, it ensures accurate and dependable fertilizer recommendations.",
+    "yieldTitle": "🌾 Crop Yield Prediction",
+    "yieldDesc": "The Crop Yield Prediction module estimates the expected crop production in advance by analyzing environmental factors such as rainfall, vegetation health, and climate conditions collected from satellite data. This information is combined with official agricultural records from the Tamil Nadu Government to provide accurate yield forecasts.",
+    "explore": "Explore →"
+  },
+  "team": {
+    "title": "Our Team"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team",
+    "name": "Your Name",
+    "email": "Email Address",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Message sent successfully!",
+    "location": "Location",
+    "emailLabel": "Email",
+    "phone": "Phone"
+  },
+  "crop": {
+    "title": "Crop Recommendation",
+    "subtitle": "Enter soil and weather parameters to get crop suggestions",
+    "nitrogen": "Nitrogen (N)",
+    "phosphorus": "Phosphorus (P)",
+    "potassium": "Potassium (K)",
+    "temperature": "Temperature (°C)",
+    "humidity": "Humidity (%)",
+    "ph": "pH Level",
+    "rainfall": "Rainfall (mm)",
+    "submit": "Get Recommendation",
+    "result": "Recommended Crop",
+    "featureImportance": "Feature Importance",
+    "shapPlot": "SHAP Force Plot",
+    "loading": "Analyzing..."
+  },
+  "fertilizer": {
+    "title": "Fertilizer Recommendation",
+    "subtitle": "Enter crop and soil details for fertilizer suggestions",
+    "cropType": "Crop Type",
+    "soilType": "Soil Type",
+    "nitrogen": "Nitrogen (N)",
+    "phosphorus": "Phosphorus (P)",
+    "potassium": "Potassium (K)",
+    "temperature": "Temperature (°C)",
+    "humidity": "Humidity (%)",
+    "moisture": "Moisture",
+    "submit": "Get Recommendation",
+    "result": "Recommended Fertilizer",
+    "explanation": "XAI Explanation",
+    "loading": "Analyzing..."
+  },
+  "yield": {
+    "title": "Crop Yield Prediction",
+    "subtitle": "Predict expected yield based on farming conditions",
+    "cropType": "Crop Type",
+    "area": "Area (hectares)",
+    "rainfall": "Rainfall (mm)",
+    "temperature": "Temperature (°C)",
+    "fertilizer": "Fertilizer Used (kg)",
+    "submit": "Predict Yield",
+    "result": "Predicted Yield",
+    "factorChart": "Factor Contribution",
+    "loading": "Predicting..."
+  },
+  "footer": {
+    "developed": "Developed by"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "common": {
+    "selectOption": "Select an option",
+    "tonnes": "tonnes/hectare",
+    "back": "Back"
+  }
+}

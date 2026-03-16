@@ -1,0 +1,62 @@
+{
+  "input": {
+    "nitrogen": 90,
+    "phosphorus": 42,
+    "potassium": 43,
+    "temperature": 25,
+    "humidity": 80,
+    "ph": 6.5,
+    "rainfall": 200
+  },
+  "prediction": {
+    "crop": "jute",
+    "confidence": 0.51,
+    "probabilities": {
+      "apple": 0.0,
+      "banana": 0.0,
+      "blackgram": 0.0,
+      "chickpea": 0.0,
+      "coconut": 0.0,
+      "coffee": 0.0,
+      "cotton": 0.0,
+      "grapes": 0.0,
+      "jute": 0.51,
+      "kidneybeans": 0.0,
+      "lentil": 0.0,
+      "maize": 0.0,
+      "mango": 0.0,
+      "mothbeans": 0.0,
+      "mungbean": 0.0,
+      "muskmelon": 0.0,
+      "orange": 0.0,
+      "papaya": 0.0,
+      "pigeonpeas": 0.0,
+      "pomegranate": 0.0,
+      "rice": 0.49,
+      "watermelon": 0.0
+    },
+    "top_5_predictions": [
+      {
+        "crop": "jute",
+        "probability": 0.51
+      },
+      {
+        "crop": "rice",
+        "probability": 0.49
+      },
+      {
+        "crop": "pomegranate",
+        "probability": 0.0
+      },
+      {
+        "crop": "pigeonpeas",
+        "probability": 0.0
+      },
+      {
+        "crop": "papaya",
+        "probability": 0.0
+      }
+    ]
+  },
+  "timestamp": "20260313_121002"
+}

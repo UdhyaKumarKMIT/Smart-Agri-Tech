@@ -1,0 +1,48 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+agritechclear/
+agritech/
+.agritech/
+
+# Environment variables
+.env
+
+# Flask instance folder
+instance/
+
+# Logs
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Jupyter / Colab
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Model files (if ML)
+*.pkl
+*.joblib
+*.h5
+*.pt
+
+# Temporary files
+tmp/
+temp/

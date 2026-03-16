@@ -1,0 +1,8 @@
+Feature,Short_Name,Importance
+Rainfall (mm),Rainfall,0.22553047087066536
+Humidity (%),Humidity,0.21698770101132686
+Potassium (K),K,0.17759902098387584
+Phosphorus (P),P,0.15027670200475482
+Nitrogen (N),N,0.10324359226341295
+Temperature (°C),Temp,0.07369119135005858
+Soil pH,pH,0.052671321515905735

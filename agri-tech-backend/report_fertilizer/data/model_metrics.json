@@ -1,0 +1,25 @@
+{
+  "feature_importance": {
+    "Temperature": 0.13154888699276798,
+    "Humidity": 0.13993163107872406,
+    "Soil Moisture": 0.14927539979022306,
+    "Soil Type": 0.02234608764547964,
+    "Crop Type": 0.11490662207001645,
+    "Nitrogen": 0.18767451511539618,
+    "Potassium": 0.13008871504946484,
+    "Phosphorus": 0.12422814225792797
+  },
+  "n_features": 8,
+  "n_classes": 25,
+  "feature_names": [
+    "Temperature",
+    "Humidity",
+    "Soil Moisture",
+    "Soil Type",
+    "Crop Type",
+    "Nitrogen",
+    "Potassium",
+    "Phosphorus"
+  ],
+  "timestamp": "2026-03-13T22:38:22.692283"
+}

@@ -1,0 +1,2 @@
+timestamp,prediction,alternatives_str,soil_type,crop_type,nitrogen,phosphorus,potassium,temperature,humidity,soil_moisture
+2026-03-14T11:48:22.862345,15-15-15,15-15-15(18.0%); 20-20-20(15.0%); 20-30-20(13.0%),Loam,Ginger,17.0,32.0,24.0,29.0,69.0,27.0

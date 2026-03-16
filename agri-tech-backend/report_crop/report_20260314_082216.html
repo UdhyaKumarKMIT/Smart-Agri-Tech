@@ -1,0 +1,365 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Crop Prediction Report - rice</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                body {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    padding: 20px;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+                .report-container {
+                    max-width: 1600px;
+                    margin: 0 auto;
+                    background-color: white;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                    overflow: hidden;
+                }
+                .header {
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                    color: white;
+                    padding: 30px;
+                    text-align: center;
+                }
+                .header h1 {
+                    font-size: 2.5em;
+                    margin-bottom: 10px;
+                }
+                .main-result {
+                    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+                    padding: 40px;
+                    text-align: center;
+                    color: white;
+                }
+                .crop-name {
+                    font-size: 4.5em;
+                    font-weight: 800;
+                    margin: 10px 0;
+                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                }
+                .confidence-badge {
+                    font-size: 1.5em;
+                    background: rgba(255,255,255,0.2);
+                    padding: 10px 30px;
+                    border-radius: 50px;
+                    display: inline-block;
+                }
+                .section-title {
+                    font-size: 2em;
+                    margin: 30px 0 20px 0;
+                    color: #2c3e50;
+                    border-bottom: 4px solid #667eea;
+                    padding-bottom: 10px;
+                }
+                .plot-card {
+                    margin-bottom: 30px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    border-radius: 15px;
+                    overflow: hidden;
+                    border: none;
+                }
+                .plot-card .card-header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    padding: 15px 20px;
+                }
+                .plot-container {
+                    padding: 20px;
+                    background-color: #f8f9fa;
+                    text-align: center;
+                }
+                .plot-container img {
+                    max-width: 100%;
+                    max-height: 600px;
+                    border-radius: 10px;
+                    border: 2px solid #e9ecef;
+                }
+                .progress {
+                    height: 20px;
+                }
+                .table-primary {
+                    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+                }
+                .footer {
+                    background: linear-gradient(135deg, #2c3e50, #3498db);
+                    color: white;
+                    padding: 30px;
+                    text-align: center;
+                }
+                .btn-custom {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border: none;
+                    padding: 10px 30px;
+                    border-radius: 25px;
+                    margin: 5px;
+                }
+                .btn-custom:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                    color: white;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="report-container">
+                <div class="header">
+                    <h1>🌾 Crop Recommendation System</h1>
+                    <p class="mb-0">Complete Analysis Report with XAI Explanations</p>
+                </div>
+                
+                <div class="bg-light p-3 d-flex justify-content-between">
+                    <span><strong>📋 Report ID:</strong> report_20260314_082216</span>
+                    <span><strong>📅 Generated:</strong> 2026-03-14 08:22:18</span>
+                </div>
+                
+                <div class="main-result">
+                    <h2>✅ Recommended Crop</h2>
+                    <div class="crop-name">rice</div>
+                    <div class="confidence-badge">
+                        Confidence: 98.7%
+                    </div>
+                </div>
+                
+                <div class="container-fluid p-4">
+                    <!-- Input Summary -->
+                    <h2 class="section-title">📝 Input Summary</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card plot-card">
+                                <div class="card-header">📊 Input Parameters</div>
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        
+            <tr>
+                <td><strong>Nitrogen (N)</strong></td>
+                <td>90.00 kg/ha</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Phosphorus (P)</strong></td>
+                <td>42.00 kg/ha</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Potassium (K)</strong></td>
+                <td>43.00 kg/ha</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Temperature</strong></td>
+                <td>20.88 °C</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Humidity</strong></td>
+                <td>82.00 %</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Soil pH</strong></td>
+                <td>6.50 </td>
+            </tr>
+            
+            <tr>
+                <td><strong>Rainfall</strong></td>
+                <td>202.94 mm</td>
+            </tr>
+            
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card plot-card">
+                                <div class="card-header">🎯 Top 5 Predictions</div>
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Rank</th>
+                                                <th>Crop</th>
+                                                <th>Probability</th>
+                                                <th>Confidence</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+            <tr class="table-primary">
+                <td>1</td>
+                <td><strong>rice</strong></td>
+                <td>98.67%</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: 98.66666666666667%;" 
+                             aria-valuenow="98.66666666666667" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td><strong>jute</strong></td>
+                <td>1.33%</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: 1.3333333333333335%;" 
+                             aria-valuenow="1.3333333333333335" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>3</td>
+                <td><strong>pomegranate</strong></td>
+                <td>0.00%</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: 0.0%;" 
+                             aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>4</td>
+                <td><strong>pigeonpeas</strong></td>
+                <td>0.00%</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: 0.0%;" 
+                             aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>5</td>
+                <td><strong>papaya</strong></td>
+                <td>0.00%</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: 0.0%;" 
+                             aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Global Explainability -->
+                    <h2 class="section-title">🌍 Global Model Interpretation</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card plot-card">
+                                <div class="card-header">📈 Feature Importance (Random Forest)</div>
+                                <div class="plot-container">
+                                    <img src="images/feature_importance_20260314_082216.png" 
+                                         alt="Feature Importance"
+                                         class="img-fluid"
+                                         onerror="this.parentElement.innerHTML='<p class=text-danger>Plot not available</p>'">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card plot-card">
+                                <div class="card-header">🎯 SHAP Feature Importance</div>
+                                <div class="plot-container">
+                                    <img src="" 
+                                         alt="SHAP Importance"
+                                         class="img-fluid"
+                                         onerror="this.parentElement.innerHTML='<p class=text-danger>Plot not available</p>'">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="card plot-card">
+                                <div class="card-header">🔬 SHAP Summary Plot (Global Impact)</div>
+                                <div class="plot-container">
+                                    <img src="" 
+                                         alt="SHAP Summary"
+                                         class="img-fluid"
+                                         onerror="this.parentElement.innerHTML='<p class=text-danger>Plot not available</p>'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Local Explainability -->
+                    <h2 class="section-title">🔍 Local Interpretation (For This Prediction)</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card plot-card">
+                                <div class="card-header">⚡ SHAP Waterfall Plot</div>
+                                <div class="plot-container">
+                                    <img src="" 
+                                         alt="SHAP Waterfall"
+                                         class="img-fluid"
+                                         onerror="this.parentElement.innerHTML='<p class=text-danger>Plot not available</p>'">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card plot-card">
+                                <div class="card-header">📊 SHAP Force Plot</div>
+                                <div class="plot-container">
+                                    <img src="" 
+                                         alt="SHAP Force"
+                                         class="img-fluid"
+                                         onerror="this.parentElement.innerHTML='<p class=text-danger>Plot not available</p>'">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="card plot-card">
+                                <div class="card-header">🔍 LIME Explanation</div>
+                                <div class="plot-container">
+                                    <img src="images/lime_explanation_20260314_082216.png" 
+                                         alt="LIME Explanation"
+                                         class="img-fluid"
+                                         onerror="this.parentElement.innerHTML='<p class=text-danger>Plot not available</p>'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer">
+                    <p class="mb-3">Report generated by Crop Recommendation System with XAI</p>
+                    <p class="mb-3">Total Plots Generated: 2/6</p>
+                    <button class="btn btn-custom" onclick="window.print()">🖨️ Print Report</button>
+                    <button class="btn btn-custom" onclick="window.close()">❌ Close</button>
+                </div>
+            </div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+        </html>
+        

@@ -1,0 +1,144 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Fertilizer Model Report</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 20px;
+                    background-color: #f5f5f5;
+                }
+                .container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    background-color: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                }
+                h1 {
+                    color: #2c3e50;
+                    text-align: center;
+                    border-bottom: 3px solid #27ae60;
+                    padding-bottom: 10px;
+                }
+                h2 {
+                    color: #34495e;
+                    margin-top: 30px;
+                    border-left: 5px solid #27ae60;
+                    padding-left: 15px;
+                }
+                .plot-container {
+                    margin: 30px 0;
+                    text-align: center;
+                    background-color: #f9f9f9;
+                    padding: 20px;
+                    border-radius: 5px;
+                }
+                .plot-container img {
+                    max-width: 100%;
+                    height: auto;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                }
+                .plot-caption {
+                    margin-top: 10px;
+                    color: #7f8c8d;
+                    font-style: italic;
+                }
+                .metrics {
+                    background-color: #ecf0f1;
+                    padding: 20px;
+                    border-radius: 5px;
+                    margin: 20px 0;
+                }
+                .footer {
+                    text-align: center;
+                    margin-top: 40px;
+                    padding-top: 20px;
+                    border-top: 1px solid #ddd;
+                    color: #7f8c8d;
+                }
+                .grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+                    gap: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>🌱 Fertilizer Recommendation Model Report</h1>
+                <p style="text-align: center; color: #27ae60;">
+                    Generated on: 2026-03-13 22:38:22
+                </p>
+                
+                <div class="metrics">
+                    <h2>📊 Model Overview</h2>
+                    <ul>
+                        <li><strong>Number of Features:</strong> 8</li>
+                        <li><strong>Feature Names:</strong> Temperature, Humidity, Soil Moisture, Soil Type, Crop Type, Nitrogen, Potassium, Phosphorus</li>
+                        <li><strong>Number of Fertilizer Classes:</strong> 25</li>
+                        <li><strong>Training Samples:</strong> 1000</li>
+                        <li><strong>Model Type:</strong> Random Forest Classifier</li>
+                    </ul>
+                </div>
+                
+                <h2>🔍 Feature Importance Analysis</h2>
+                <div class="grid">
+        
+                    <div class="plot-container">
+                        <img src="images/feature_importance.png" alt="Feature Importance">
+                        <div class="plot-caption">Feature Importance - Shows which features most influence predictions</div>
+                    </div>
+            
+                    <div class="plot-container">
+                        <img src="images/correlation_heatmap.png" alt="Correlation Heatmap">
+                        <div class="plot-caption">Correlation Heatmap - Shows relationships between features</div>
+                    </div>
+            
+                </div>
+                
+                <h2>📈 Data Distribution Analysis</h2>
+                <div class="grid">
+        
+                    <div class="plot-container">
+                        <img src="images/npk_distribution.png" alt="NPK Distribution">
+                        <div class="plot-caption">NPK Distribution - Distribution of Nitrogen, Phosphorus, and Potassium values</div>
+                    </div>
+            
+                    <div class="plot-container">
+                        <img src="images/partial_dependence.png" alt="Partial Dependence">
+                        <div class="plot-caption">Partial Dependence Plots - How each feature affects predictions</div>
+                    </div>
+            
+                </div>
+                
+                <h2>🎯 SHAP Analysis</h2>
+                <div class="grid">
+        
+                    <div class="plot-container">
+                        <img src="images/shap_summary.png" alt="SHAP Summary">
+                        <div class="plot-caption">SHAP Feature Importance - Alternative feature importance measure</div>
+                    </div>
+            
+                </div>
+                
+                <h2>📋 Fertilizer Classes (25)</h2>
+                <div class="metrics">
+                    <p style="column-count: 3;">
+        0-20-20<br>0-40-40<br>100-50-50<br>120-60-60<br>15-15-15<br>20-10-10<br>20-10-20<br>20-15-15<br>20-20-20<br>20-30-20<br>20-40-20<br>25-10-15<br>30-10-20<br>30-15-15<br>30-15-20<br>30-20-20<br>40-20-20<br>40-30-40<br>60-40-60<br>Compound NPK (0-20-20)<br>DAP<br>MOP<br>Organic compost<br>SSP<br>Urea<br>
+                    </p>
+                </div>
+                
+                <div class="footer">
+                    <p>Report generated automatically by Fertilizer Recommendation System</p>
+                    <p>Images stored in: /report_fertilizer/images/</p>
+                </div>
+            </div>
+        </body>
+        </html>
+        

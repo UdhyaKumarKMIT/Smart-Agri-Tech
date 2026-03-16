@@ -1,0 +1,503 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Crop Prediction Report - jute</title>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: #333;
+                    line-height: 1.6;
+                    padding: 20px;
+                    min-height: 100vh;
+                }
+                
+                .container {
+                    max-width: 1400px;
+                    margin: 0 auto;
+                    background-color: white;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                    overflow: hidden;
+                }
+                
+                .header {
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                    color: white;
+                    padding: 40px;
+                    text-align: center;
+                }
+                
+                .header h1 {
+                    font-size: 2.8em;
+                    margin-bottom: 10px;
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+                }
+                
+                .header p {
+                    font-size: 1.2em;
+                    opacity: 0.95;
+                }
+                
+                .report-meta {
+                    background-color: #f8f9fa;
+                    padding: 15px 30px;
+                    border-bottom: 2px solid #e9ecef;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                
+                .report-id {
+                    font-family: monospace;
+                    color: #495057;
+                    font-size: 1.1em;
+                }
+                
+                .timestamp {
+                    color: #495057;
+                    font-size: 1.1em;
+                }
+                
+                .main-result {
+                    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+                    padding: 50px 30px;
+                    text-align: center;
+                    color: white;
+                }
+                
+                .main-result h2 {
+                    font-size: 1.8em;
+                    margin-bottom: 15px;
+                    opacity: 0.95;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                }
+                
+                .crop-name {
+                    font-size: 5em;
+                    font-weight: 800;
+                    margin: 10px 0;
+                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                }
+                
+                .content {
+                    padding: 40px;
+                }
+                
+                .grid-2 {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 30px;
+                    margin-bottom: 30px;
+                }
+                
+                .grid-3 {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 30px;
+                    margin-bottom: 30px;
+                }
+                
+                .card {
+                    background-color: white;
+                    border-radius: 15px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    overflow: hidden;
+                    border: 1px solid #e9ecef;
+                    transition: all 0.3s ease;
+                }
+                
+                .card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+                }
+                
+                .card-header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 18px 25px;
+                    font-size: 1.3em;
+                    font-weight: bold;
+                }
+                
+                .card-body {
+                    padding: 25px;
+                }
+                
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                
+                table th, table td {
+                    padding: 15px;
+                    text-align: left;
+                    border-bottom: 1px solid #e9ecef;
+                }
+                
+                table th {
+                    background-color: #f8f9fa;
+                    font-weight: 600;
+                    font-size: 1.1em;
+                }
+                
+                .highlight {
+                    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+                    font-weight: bold;
+                }
+                
+                .plot-container {
+                    text-align: center;
+                    padding: 20px;
+                    min-height: 450px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #fafafa;
+                }
+                
+                .plot-container img {
+                    max-width: 100%;
+                    max-height: 500px;
+                    width: auto;
+                    height: auto;
+                    border-radius: 10px;
+                    border: 2px solid #e9ecef;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                }
+                
+                .footer {
+                    background: linear-gradient(135deg, #2c3e50, #3498db);
+                    color: white;
+                    padding: 30px;
+                    text-align: center;
+                }
+                
+                .button {
+                    display: inline-block;
+                    padding: 12px 30px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 25px;
+                    margin: 5px;
+                    transition: all 0.3s;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1em;
+                    font-weight: bold;
+                }
+                
+                .button:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                }
+                
+                .section-title {
+                    font-size: 2em;
+                    margin: 40px 0 25px 0;
+                    color: #2c3e50;
+                    border-bottom: 4px solid #667eea;
+                    padding-bottom: 10px;
+                }
+                
+                @media (max-width: 768px) {
+                    .grid-2, .grid-3 {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    .crop-name {
+                        font-size: 3em;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>🌾 Crop Recommendation System</h1>
+                    <p>Explainable AI (XAI) Prediction Report</p>
+                </div>
+                
+                <div class="report-meta">
+                    <span class="report-id">📋 Report ID: report_20260313_122446</span>
+                    <span class="timestamp">📅 Generated: 2026-03-13 12:24:50</span>
+                </div>
+                
+                <div class="main-result">
+                    <h2>Recommended Crop</h2>
+                    <div class="crop-name">jute</div>
+                </div>
+                
+                <div class="content">
+                    <!-- Input Features and Top Probabilities -->
+                    <div class="grid-2">
+                        <!-- Input Features Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                📊 Input Soil & Climate Parameters
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    
+            <tr>
+                <td><strong>Nitrogen (N)</strong></td>
+                <td>90.00</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Phosphorus (P)</strong></td>
+                <td>42.00</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Potassium (K)</strong></td>
+                <td>43.00</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Temperature (°C)</strong></td>
+                <td>25.00</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Humidity (%)</strong></td>
+                <td>80.00</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Soil pH</strong></td>
+                <td>6.50</td>
+            </tr>
+            
+            <tr>
+                <td><strong>Rainfall (mm)</strong></td>
+                <td>200.00</td>
+            </tr>
+            
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Top Probabilities Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                🎯 Top 5 Crop Probabilities
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Crop</th>
+                                        <th>Probability</th>
+                                    </tr>
+                                    
+            <tr class="highlight">
+                <td>1</td>
+                <td><strong>jute</strong></td>
+                <td>51.00%</td>
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td><strong>rice</strong></td>
+                <td>49.00%</td>
+            </tr>
+            
+            <tr>
+                <td>3</td>
+                <td><strong>pomegranate</strong></td>
+                <td>0.00%</td>
+            </tr>
+            
+            <tr>
+                <td>4</td>
+                <td><strong>pigeonpeas</strong></td>
+                <td>0.00%</td>
+            </tr>
+            
+            <tr>
+                <td>5</td>
+                <td><strong>papaya</strong></td>
+                <td>0.00%</td>
+            </tr>
+            
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- GLOBAL EXPLAINABILITY SECTION -->
+                    <h2 class="section-title">🌍 Global Model Explainability</h2>
+                    
+                    <div class="grid-2">
+                        <!-- Feature Importance Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                📈 Global Feature Importance
+                            </div>
+                            <div class="plot-container">
+                                <img src="images/global_feature_importance_20260313_122446.png" 
+                                     alt="Global Feature Importance"
+                                     onerror="this.parentElement.innerHTML='<p style='color:#999;'>Feature importance plot not available</p>'">
+                            </div>
+                        </div>
+                        
+                        <!-- SHAP Summary Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                📊 SHAP Feature Importance
+                            </div>
+                            <div class="plot-container">
+                                <img src="" 
+                                     alt="SHAP Summary"
+                                     onerror="this.parentElement.innerHTML='<p style='color:#999;'>SHAP summary not available</p>'">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-2">
+                        <!-- SHAP Dot Summary Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                🔬 SHAP Feature Impact Summary
+                            </div>
+                            <div class="plot-container">
+                                <img src="" 
+                                     alt="SHAP Dot Summary"
+                                     onerror="this.parentElement.innerHTML='<p style='color:#999;'>SHAP dot summary not available</p>'">
+                            </div>
+                        </div>
+                        
+                        <!-- Model Insights Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                💡 Global Model Insights
+                            </div>
+                            <div class="card-body">
+                                <ul style="margin-left: 25px; font-size: 1.1em;">
+                                    <li><strong>Top Features:</strong> The most important features globally are Nitrogen (N), Phosphorus (P), and Potassium (K).</li>
+                                    <li><strong>Feature Contribution:</strong> The top 3 features contribute approximately 43.1% to the model's decisions.</li>
+                                    <li><strong>SHAP Analysis:</strong> The SHAP dot plot shows how each feature's value impacts predictions (red=high value, blue=low value).</li>
+                                    <li><strong>Model Type:</strong> Random Forest with 300 trees.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- LOCAL EXPLAINABILITY SECTION -->
+                    <h2 class="section-title">🔍 Local Explainability (Sample #1)</h2>
+                    
+                    <div class="grid-2">
+                        <!-- SHAP Analysis -->
+                        <div class="card">
+                            <div class="card-header">
+                                ⚡ SHAP Local Analysis
+                            </div>
+                            <div class="plot-container">
+                                <img src="" 
+                                     alt="SHAP Analysis"
+                                     onerror="this.parentElement.innerHTML='<p style='color:#999;'>SHAP analysis not available</p>'">
+                            </div>
+                            <div class="card-body">
+                                <p><strong>How to read:</strong> <span style="color:#ff6b6b;">Red bars</span> push prediction towards <strong>jute</strong>, <span style="color:#4dabf7;">blue bars</span> push away. Longer bars = stronger impact.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- LIME Explanation -->
+                        <div class="card">
+                            <div class="card-header">
+                                🔍 LIME Explanation (Sample #1)
+                            </div>
+                            <div class="plot-container">
+                                <img src="images/report_20260313_122446/lime_explanation_20260313_122446.png" 
+                                     alt="LIME Explanation"
+                                     onerror="this.parentElement.innerHTML='<p style='color:#999;'>LIME explanation not available</p>'">
+                            </div>
+                            <div class="card-body">
+                                <p><strong>How to read:</strong> <span style="color:#2ecc71;">Green bars</span> support the prediction, <span style="color:#e74c3c;">red bars</span> contradict it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Insights Card -->
+                    <div class="grid-2">
+                        <div class="card">
+                            <div class="card-header">
+                                💡 Key Insights for This Prediction
+                            </div>
+                            <div class="card-body">
+                                <ul style="margin-left: 25px; font-size: 1.1em;">
+                                    <li><strong>Recommended Crop:</strong> jute</li>
+                                    <li><strong>Top Alternative:</strong> rice (49.0%)</li>
+                                    <li><strong>Second Alternative:</strong> pomegranate (0.0%)</li>
+                                    <li><strong>SHAP Analysis:</strong> Shows which features most influenced this specific prediction</li>
+                                    <li><strong>LIME Analysis:</strong> Provides a local interpretable explanation for this prediction</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                📋 Report Summary
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    <tr>
+                                        <td><strong>Report ID:</strong></td>
+                                        <td>report_20260313_122446</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Generated:</strong></td>
+                                        <td>2026-03-13 12:24:50</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Model Type:</strong></td>
+                                        <td>Random Forest Ensemble</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Number of Features:</strong></td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Number of Crops:</strong></td>
+                                        <td>22</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer">
+                    <p>📧 This report was automatically generated by the Crop Recommendation System</p>
+                    <p>🌱 Powered by Ensemble Model with XAI capabilities</p>
+                    <p>
+                        <button class="button" onclick="window.print()">🖨️ Print Report</button>
+                        <button class="button" onclick="window.close()">❌ Close</button>
+                    </p>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    console.log('Report loaded successfully');
+                });
+            </script>
+        </body>
+        </html>
+        
