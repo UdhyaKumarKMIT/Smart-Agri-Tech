@@ -17,10 +17,6 @@ instance/
 # Logs
 *.log
 
-# Database
-*.db
-*.sqlite3
-
 # Distribution / packaging
 build/
 dist/
@@ -37,11 +33,7 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Model files (if ML)
-*.pkl
-*.joblib
-*.h5
-*.pt
+
 
 # Temporary files
 tmp/
