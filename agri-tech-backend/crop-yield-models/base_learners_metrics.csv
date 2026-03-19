@@ -1,0 +1,6 @@
+,Train RMSE,Test RMSE,Train MAE,Test MAE,Train R²,Test R²
+Random Forest,2.993,4.211,0.897,1.624,0.992,0.985
+Decision Tree,4.356,4.989,1.193,2.018,0.982,0.979
+Support Vector Regressor,22.377,25.735,8.701,11.876,0.532,0.441
+SGD Regressor,25.062,26.529,18.191,19.788,0.413,0.406
+K-Nearest Neighbors,0.0,27.179,0.0,14.471,1.0,0.376
