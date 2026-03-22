@@ -300,25 +300,26 @@ class CropYieldPredictor:
             predicted_production = predicted_yield * record['Area']
             
             # Prepare response
+           # Prepare response
             result = {
                 'success': True,
                 'district': district,
                 'crop': crop,
-                'area': float(record['Area'],4),
-                'predicted_yield': float(predicted_yield,4),
-                'predicted_production': float(predicted_production,4),
+                'area': round(float(record['Area']), 4),
+                'predicted_yield': round(float(predicted_yield), 4),
+                'predicted_production': round(float(predicted_production), 4),
                 'model_used': 'stacking_ensemble',
                 'features': {
-                    'NDVI': float(record['NDVI'],4),
-                    'NDWI': float(record['NDWI'],4),
-                    'EVI': float(record['EVI'],4),
-                    'SAVI': float(record['SAVI'],4),
-                    'SMAI': float(record['SMAI'],4),
-                    'Precipitation': float(record['Precipitation'],4),
-                    'CQI': float(record['CQI'],4)
+                    'NDVI': round(float(record['NDVI']), 4),
+                    'NDWI': round(float(record['NDWI']), 4),
+                    'EVI': round(float(record['EVI']), 4),
+                    'SAVI': round(float(record['SAVI']), 4),
+                    'SMAI': round(float(record['SMAI']), 4),
+                    'Precipitation': round(float(record['Precipitation']), 4),
+                    'CQI': round(float(record['CQI']), 4)
                 }
             }
-            
+
             return result
             
         except Exception as e:

@@ -4,7 +4,7 @@ import joblib
 import pickle
 import numpy as np
 from crop_report_generator import CropReportGenerator
-
+from fastapi import BackgroundTasks
 # Base backend directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 

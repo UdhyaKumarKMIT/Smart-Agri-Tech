@@ -1,0 +1,62 @@
+{
+  "input": {
+    "nitrogen": 10,
+    "phosphorus": 42,
+    "potassium": 43,
+    "temperature": 20.88,
+    "humidity": 98,
+    "ph": 9.5,
+    "rainfall": 20.94
+  },
+  "prediction": {
+    "crop": "muskmelon",
+    "confidence": 0.4166666666666667,
+    "probabilities": {
+      "apple": 0.0,
+      "banana": 0.0,
+      "blackgram": 0.0,
+      "chickpea": 0.006666666666666667,
+      "coconut": 0.0,
+      "coffee": 0.0,
+      "cotton": 0.0033333333333333335,
+      "grapes": 0.0,
+      "jute": 0.01,
+      "kidneybeans": 0.0,
+      "lentil": 0.04,
+      "maize": 0.0,
+      "mango": 0.0,
+      "mothbeans": 0.07,
+      "mungbean": 0.04,
+      "muskmelon": 0.4166666666666667,
+      "orange": 0.02,
+      "papaya": 0.27,
+      "pigeonpeas": 0.0,
+      "pomegranate": 0.10333333333333333,
+      "rice": 0.016666666666666666,
+      "watermelon": 0.0033333333333333335
+    },
+    "top_5_predictions": [
+      {
+        "crop": "muskmelon",
+        "probability": 0.4166666666666667
+      },
+      {
+        "crop": "papaya",
+        "probability": 0.27
+      },
+      {
+        "crop": "pomegranate",
+        "probability": 0.10333333333333333
+      },
+      {
+        "crop": "mothbeans",
+        "probability": 0.07
+      },
+      {
+        "crop": "lentil",
+        "probability": 0.04
+      }
+    ]
+  },
+  "timestamp": "20260322_110731"
+}

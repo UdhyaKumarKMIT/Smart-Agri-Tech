@@ -97,21 +97,27 @@ const YieldPrediction = () => {
     setConnectionError(null);
     
     try {
-      const response = await fetch(`${API_BASE_URL}/api/districts`);
+      console.log('Fetching districts from:', `${API_BASE_URL}/api/yield/districts`);
+      const response = await fetch(`${API_BASE_URL}/api/yield/districts`);
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
       }
       
       const data = await response.json();
+      console.log('Districts received:', data);
       
       if (Array.isArray(data)) {
         setDistricts(data);
+      } else {
+        console.error('Unexpected data format:', data);
+        setConnectionError('Server returned unexpected data format');
       }
       
     } catch (error) {
       console.error('Error fetching districts:', error);
-      setConnectionError('Could not connect to backend server');
+      setConnectionError(error instanceof Error ? error.message : 'Could not connect to backend server');
     } finally {
       setLoadingDistricts(false);
     }
@@ -122,18 +128,26 @@ const YieldPrediction = () => {
     setError(null);
     
     try {
-      const response = await fetch(`${API_BASE_URL}/api/crops/${encodeURIComponent(district)}`);
+      console.log('Fetching crops for district:', district);
+      const response = await fetch(`${API_BASE_URL}/api/yield/crops/${encodeURIComponent(district)}`);
       
-      if (response.ok) {
-        const data = await response.json();
-        
-        if (Array.isArray(data)) {
-          setCrops(data);
-        }
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Crops received:', data);
+      
+      if (Array.isArray(data)) {
+        setCrops(data);
+      } else {
+        console.error('Unexpected crops data format:', data);
+        setError('Server returned unexpected crops data format');
       }
     } catch (error) {
       console.error('Error fetching crops:', error);
-      setError(`Failed to load crops for ${district}`);
+      setError(error instanceof Error ? error.message : `Failed to load crops for ${district}`);
     } finally {
       setLoadingCrops(false);
     }
@@ -143,12 +157,18 @@ const YieldPrediction = () => {
     setLoadingInsights(true);
     
     try {
-      const response = await fetch(`${API_BASE_URL}/api/district-insights/${encodeURIComponent(district)}`);
+      console.log('Fetching insights for district:', district);
+      // FIXED: Changed from 'district-insights' to 'insights' to match Flask endpoint
+      const response = await fetch(`${API_BASE_URL}/api/yield/insights/${encodeURIComponent(district)}`);
       
-      if (response.ok) {
-        const data = await response.json();
-        setInsights(data);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
       }
+      
+      const data = await response.json();
+      console.log('Insights received:', data);
+      setInsights(data);
     } catch (error) {
       console.error('Error fetching insights:', error);
     } finally {
@@ -163,7 +183,8 @@ const YieldPrediction = () => {
     setError(null);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/predict`, {
+      console.log('Submitting prediction for:', form);
+      const response = await fetch(`${API_BASE_URL}/predict-yield`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -172,6 +193,7 @@ const YieldPrediction = () => {
       });
 
       const data = await response.json();
+      console.log('Prediction response:', data);
 
       if (response.ok && data.success) {
         setResult(data);
@@ -196,7 +218,8 @@ const YieldPrediction = () => {
     setInsights(null);
   };
 
-  const formatNumber = (num: number) => {
+  const formatNumber = (num: number | undefined) => {
+    if (num === undefined || num === null) return '0';
     return new Intl.NumberFormat('en-IN', { maximumFractionDigits: 2 }).format(num);
   };
 
@@ -359,7 +382,7 @@ const YieldPrediction = () => {
               </div>
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
-              Model used: {result.model_used.replace('_', ' ')}
+              Model used: {result.model_used?.replace('_', ' ') || 'Stacking Ensemble'}
             </p>
           </motion.div>
         )}
@@ -397,9 +420,9 @@ const YieldPrediction = () => {
                   <TrendingUp className="h-4 w-4" />
                   <p className="text-sm font-medium">Most Produced Crop</p>
                 </div>
-                <p className="mt-1 text-lg font-semibold">{insights.top_crop.name}</p>
+                <p className="mt-1 text-lg font-semibold">{insights.top_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-muted-foreground">
-                  {formatNumber(insights.top_crop.production)} kg
+                  {formatNumber(insights.top_crop?.production)} kg
                 </p>
               </div>
               
@@ -408,9 +431,9 @@ const YieldPrediction = () => {
                   <TrendingDown className="h-4 w-4" />
                   <p className="text-sm font-medium">Least Produced Crop</p>
                 </div>
-                <p className="mt-1 text-lg font-semibold">{insights.bottom_crop.name}</p>
+                <p className="mt-1 text-lg font-semibold">{insights.bottom_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-muted-foreground">
-                  {formatNumber(insights.bottom_crop.production)} kg
+                  {formatNumber(insights.bottom_crop?.production)} kg
                 </p>
               </div>
             </div>
@@ -418,42 +441,44 @@ const YieldPrediction = () => {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-lg border bg-card p-4">
                 <p className="text-sm font-medium text-muted-foreground">Highest Yield Crop</p>
-                <p className="text-lg font-semibold">{insights.best_yield_crop.name}</p>
+                <p className="text-lg font-semibold">{insights.best_yield_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-green-600">
-                  {formatNumber(insights.best_yield_crop.yield)} kg/ha
+                  {formatNumber(insights.best_yield_crop?.yield)} kg/ha
                 </p>
               </div>
               
               <div className="rounded-lg border bg-card p-4">
                 <p className="text-sm font-medium text-muted-foreground">Lowest Yield Crop</p>
-                <p className="text-lg font-semibold">{insights.worst_yield_crop.name}</p>
+                <p className="text-lg font-semibold">{insights.worst_yield_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-red-600">
-                  {formatNumber(insights.worst_yield_crop.yield)} kg/ha
+                  {formatNumber(insights.worst_yield_crop?.yield)} kg/ha
                 </p>
               </div>
             </div>
 
             {/* Crop Rankings */}
-            <div className="rounded-lg border bg-card p-4">
-              <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
-                <BarChart3 className="h-4 w-4 text-primary" />
-                Crop Rankings by Production
-              </h3>
-              <div className="space-y-2">
-                {insights.crop_stats.map((stat, index) => (
-                  <div key={stat.crop} className="flex items-center justify-between border-b pb-2 last:border-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-muted-foreground">#{index + 1}</span>
-                      <span>{stat.crop}</span>
+            {insights.crop_stats && insights.crop_stats.length > 0 && (
+              <div className="rounded-lg border bg-card p-4">
+                <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
+                  <BarChart3 className="h-4 w-4 text-primary" />
+                  Crop Rankings by Production
+                </h3>
+                <div className="space-y-2">
+                  {insights.crop_stats.map((stat, index) => (
+                    <div key={stat.crop} className="flex items-center justify-between border-b pb-2 last:border-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-muted-foreground">#{index + 1}</span>
+                        <span>{stat.crop}</span>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium">{formatNumber(stat.production)} kg</p>
+                        <p className="text-xs text-muted-foreground">{formatNumber(stat.yield)} kg/ha</p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-sm font-medium">{formatNumber(stat.production)} kg</p>
-                      <p className="text-xs text-muted-foreground">{formatNumber(stat.yield)} kg/ha</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </motion.div>
         )}
 

@@ -5,6 +5,9 @@ pandas
 scikit-learn
 joblib
 
+
+fastapi
+
 flask
 flask-cors
 numpy
