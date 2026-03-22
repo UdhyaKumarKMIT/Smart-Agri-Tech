@@ -1,2 +1,2 @@
 timestamp,prediction,alternatives_str,soil_type,crop_type,nitrogen,phosphorus,potassium,temperature,humidity,soil_moisture
-2026-03-22T18:34:52.491314,Urea,Urea(17.0%); MOP(16.0%); DAP(14.0%),Clay Loam,Linseed (Flax),39.0,90.0,29.0,30.0,102.0,100.0
+2026-03-22T18:49:23.284138,Urea,Urea(25.0%); 30-15-20(17.0%); 20-20-20(14.0%),Loam,Ginger,119.0,39.0,29.0,89.0,69.0,29.0
