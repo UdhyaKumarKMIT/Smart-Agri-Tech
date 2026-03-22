@@ -370,14 +370,14 @@ const YieldPrediction = () => {
                 <p className="text-sm text-muted-foreground">Predicted Yield</p>
                 <p className="text-4xl font-bold text-primary">
                   {formatNumber(result.predicted_yield)} 
-                  <span className="ml-2 text-lg font-normal text-muted-foreground">kg/ha</span>
+                  <span className="ml-2 text-lg font-normal text-muted-foreground">Ton/ha</span>
                 </p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Predicted Production</p>
                 <p className="text-3xl font-semibold">
                   {formatNumber(result.predicted_production)} 
-                  <span className="ml-2 text-base font-normal text-muted-foreground">kg</span>
+                  <span className="ml-2 text-base font-normal text-muted-foreground">Tonkg</span>
                 </p>
               </div>
             </div>
@@ -406,11 +406,11 @@ const YieldPrediction = () => {
               </div>
               <div className="rounded-lg border bg-card p-4">
                 <p className="text-xs text-muted-foreground">Total Production</p>
-                <p className="text-xl font-bold">{formatNumber(insights.total_production)} kg</p>
+                <p className="text-xl font-bold">{formatNumber(insights.total_production)} Ton</p>
               </div>
               <div className="rounded-lg border bg-card p-4">
                 <p className="text-xs text-muted-foreground">Average Yield</p>
-                <p className="text-xl font-bold">{formatNumber(insights.avg_yield)} kg/ha</p>
+                <p className="text-xl font-bold">{formatNumber(insights.avg_yield)} Ton/ha</p>
               </div>
             </div>
 
@@ -422,7 +422,7 @@ const YieldPrediction = () => {
                 </div>
                 <p className="mt-1 text-lg font-semibold">{insights.top_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-muted-foreground">
-                  {formatNumber(insights.top_crop?.production)} kg
+                  {formatNumber(insights.top_crop?.production)}Ton
                 </p>
               </div>
               
@@ -433,7 +433,7 @@ const YieldPrediction = () => {
                 </div>
                 <p className="mt-1 text-lg font-semibold">{insights.bottom_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-muted-foreground">
-                  {formatNumber(insights.bottom_crop?.production)} kg
+                  {formatNumber(insights.bottom_crop?.production)} Ton
                 </p>
               </div>
             </div>
@@ -443,7 +443,7 @@ const YieldPrediction = () => {
                 <p className="text-sm font-medium text-muted-foreground">Highest Yield Crop</p>
                 <p className="text-lg font-semibold">{insights.best_yield_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-green-600">
-                  {formatNumber(insights.best_yield_crop?.yield)} kg/ha
+                  {formatNumber(insights.best_yield_crop?.yield)} Ton/ha
                 </p>
               </div>
               
@@ -451,7 +451,7 @@ const YieldPrediction = () => {
                 <p className="text-sm font-medium text-muted-foreground">Lowest Yield Crop</p>
                 <p className="text-lg font-semibold">{insights.worst_yield_crop?.name || 'N/A'}</p>
                 <p className="text-sm text-red-600">
-                  {formatNumber(insights.worst_yield_crop?.yield)} kg/ha
+                  {formatNumber(insights.worst_yield_crop?.yield)} Ton/ha
                 </p>
               </div>
             </div>
@@ -471,8 +471,8 @@ const YieldPrediction = () => {
                         <span>{stat.crop}</span>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-medium">{formatNumber(stat.production)} kg</p>
-                        <p className="text-xs text-muted-foreground">{formatNumber(stat.yield)} kg/ha</p>
+                        <p className="text-sm font-medium">{formatNumber(stat.production)} Ton</p>
+                        <p className="text-xs text-muted-foreground">{formatNumber(stat.yield)} Ton/ha</p>
                       </div>
                     </div>
                   ))}

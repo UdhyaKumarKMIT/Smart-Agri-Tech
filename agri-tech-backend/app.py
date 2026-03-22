@@ -217,24 +217,40 @@ def predict_fertilizer():
         if isinstance(result, tuple) and len(result) == 2 and result[1] >= 400:
             return jsonify(result[0]), result[1]
         
-        # Generate report synchronously (waits for completion)
+       # WITH THIS
         try:
             print("📊 Generating fertilizer report after prediction...")
-            report_result = report_generator.generate_html_report()
+
+            # Build input_data dict for the report using the same keys
+            # that predict_fertilizer stores (soil_moisture not moisture)
+            report_input_data = {
+                'soil_type'    : data.get('soil_type', ''),
+                'crop_type'    : data.get('crop_type', ''),
+                'nitrogen'     : float(data.get('nitrogen', 0)),
+                'phosphorus'   : float(data.get('phosphorus', 0)),
+                'potassium'    : float(data.get('potassium', 0)),
+                'temperature'  : float(data.get('temperature', 0)),
+                'humidity'     : float(data.get('humidity', 0)),
+                'soil_moisture': float(data.get('soil_moisture', 0)),
+            }
+
+            report_result = report_generator.generate_html_report(
+                input_data        = report_input_data,
+                prediction_result = result           # contains 'fertilizer' key
+            )
             print(f"✅ Report generated: {report_result['latest_report']}")
-            
-            # Add report info to result
+
             if isinstance(result, dict):
                 result['report_generated'] = True
-                result['report_url'] = '/fertilizer-report/latest'
-                result['report_path'] = report_result['latest_report']
-                
+                result['report_url']       = '/fertilizer-report/latest'
+                result['report_path']      = report_result['latest_report']
+
         except Exception as e:
             print(f"❌ Error generating report: {e}")
+            import traceback; traceback.print_exc()
             if isinstance(result, dict):
                 result['report_generated'] = False
-                result['report_error'] = str(e)
-        
+                result['report_error']     = str(e)
         return jsonify(result)
         
     except Exception as e:

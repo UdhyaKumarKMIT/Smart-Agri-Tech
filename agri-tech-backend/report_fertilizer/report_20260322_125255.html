@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop Prediction Report - rice</title>
+    <title>Fertilizer Recommendation Report</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: #333;
         }
         .container {
@@ -17,7 +17,7 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden;
         }
         .header {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white; padding: 40px; text-align: center;
         }
         .header h1 { font-size: 2.5em; margin-bottom: 10px; }
@@ -27,11 +27,11 @@
             display: flex; justify-content: space-between;
         }
         .main-result {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
             padding: 40px 30px; text-align: center; color: white;
         }
-        .crop-name {
-            font-size: 4em; font-weight: 800; margin: 10px 0;
+        .fert-name {
+            font-size: 3.5em; font-weight: 800; margin: 10px 0;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
         }
         .content { padding: 40px; }
@@ -45,7 +45,7 @@
             overflow: hidden; border: 1px solid #e9ecef;
         }
         .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white; padding: 15px 20px;
             font-size: 1.2em; font-weight: bold;
         }
@@ -69,8 +69,8 @@
             display: block;
         }
         .no-plot {
-            padding: 40px; color: #999; font-style: italic;
-            text-align: center;
+            padding: 40px; color: #999;
+            font-style: italic; text-align: center;
         }
         table { width: 100%; border-collapse: collapse; }
         table th, table td {
@@ -83,21 +83,21 @@
         }
         .section-title {
             font-size: 2em; margin: 40px 0 25px 0; color: #2c3e50;
-            border-bottom: 4px solid #667eea; padding-bottom: 10px;
+            border-bottom: 4px solid #11998e; padding-bottom: 10px;
         }
         .footer {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background: linear-gradient(135deg, #2c3e50, #11998e);
             color: white; padding: 30px; text-align: center;
         }
         .button {
             display: inline-block; padding: 12px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white; text-decoration: none; border-radius: 25px;
             margin: 5px; border: none; cursor: pointer;
         }
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
-            .crop-name { font-size: 2.5em; }
+            .fert-name { font-size: 2.2em; }
         }
     </style>
 </head>
@@ -105,18 +105,18 @@
 <div class="container">
 
     <div class="header">
-        <h1>🌾 Crop Recommendation System</h1>
+        <h1>🌱 Fertilizer Recommendation System</h1>
         <p>Complete XAI Analysis Report</p>
     </div>
 
     <div class="report-meta">
-        <span>📋 Report ID: report_20260322_183736</span>
-        <span>📅 Generated: 2026-03-22 18:38:05</span>
+        <span>📋 Report ID: report_20260322_125255</span>
+        <span>📅 Generated: 2026-03-22 12:53:26</span>
     </div>
 
     <div class="main-result">
-        <h2>✅ Recommended Crop</h2>
-        <div class="crop-name">rice</div>
+        <h2>✅ Recommended Fertilizer</h2>
+        <div class="fert-name"></div>
     </div>
 
     <div class="content">
@@ -128,56 +128,26 @@
                 <div class="card-header">📊 Input Parameters</div>
                 <div class="card-body">
                     <table>
-            <tr>
-                <td><strong>Nitrogen (N)</strong></td>
-                <td>90.00</td>
-            </tr>
-            <tr>
-                <td><strong>Phosphorus (P)</strong></td>
-                <td>42.00</td>
-            </tr>
-            <tr>
-                <td><strong>Potassium (K)</strong></td>
-                <td>43.00</td>
-            </tr>
-            <tr>
-                <td><strong>Temperature (°C)</strong></td>
-                <td>20.88</td>
-            </tr>
-            <tr>
-                <td><strong>Humidity (%)</strong></td>
-                <td>82.00</td>
-            </tr>
-            <tr>
-                <td><strong>Soil pH</strong></td>
-                <td>6.50</td>
-            </tr>
-            <tr>
-                <td><strong>Rainfall (mm)</strong></td>
-                <td>202.94</td>
-            </tr></table>
+                        <tr><td>No input data available</td></tr>
+                    </table>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">🎯 Top Predictions</div>
                 <div class="card-body">
                     <table>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Crop</th>
-                            <th>Probability</th>
-                        </tr>
+                        <tr><th>Rank</th><th>Fertilizer</th><th>Probability</th></tr>
                         
-                <tr class="highlight">
-                    <td>1</td>
-                    <td><strong>rice</strong></td>
-                    <td>98.67%</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><strong>jute</strong></td>
-                    <td>1.33%</td>
-                </tr>
+                            <tr class="highlight">
+                                <td>1</td>
+                                <td><strong>0-20-20</strong></td>
+                                <td>99.00%</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>15-15-15</strong></td>
+                                <td>1.00%</td>
+                            </tr>
                     </table>
                 </div>
             </div>
@@ -186,66 +156,68 @@
         <!-- ── Data Exploration ── -->
         <h2 class="section-title">📊 Data Exploration</h2>
         <div class="grid-2">
-            
             <div class="card">
-                <div class="card-header">📈 Feature Distributions</div>
+                <div class="card-header">🌿 Fertilizer Distribution</div>
                 <div class="plot-container">
-                    <img src="images/input_distribution_20260322_183736.png"
-                         alt="Input Distributions"
+                    <img src="images/01_fertilizer_distribution.png"
+                         alt="Fertilizer Distribution"
+                         onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">🧪 NPK Distribution</div>
+                <div class="plot-container">
+                    <img src="images/02_npk_distribution.png"
+                         alt="NPK Distribution"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">🔗 Correlation Heatmap</div>
                 <div class="plot-container">
-                    <img src="images/correlation_heatmap_20260322_183736.png"
+                    <img src="images/03_correlation_heatmap.png"
                          alt="Correlation Heatmap"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
         </div>
 
-        <!-- ── Global XAI — ordered as requested ── -->
+        <!-- ── Global XAI ── -->
         <h2 class="section-title">🌍 Global Model Interpretation</h2>
         <div class="grid-2">
 
-            <!-- 1. Feature Importance -->
             <div class="card">
                 <div class="card-header">📈 Feature Importance</div>
                 <div class="plot-container">
-                    <img src="images/feature_importance_20260322_183736.png"
+                    <img src="images/04_feature_importance.png"
                          alt="Feature Importance"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
 
-      
-            <!-- 3. SHAP Beeswarm -->
+            <div class="card">
+                <div class="card-header">📉 Partial Dependency Plot</div>
+                <div class="plot-container">
+                    <img src="images/05_partial_dependence.png"
+                         alt="Partial Dependency Plot"
+                         onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-header">🔬 SHAP Summary (Beeswarm)</div>
                 <div class="plot-container">
-                    <img src="images/shap_dot_summary_20260322_183736.png"
-                         alt="SHAP Summary Beeswarm"
+                    <img src="images/06_shap_beeswarm.png"
+                         alt="SHAP Beeswarm"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
 
-            <!-- 4. SHAP Bar -->
             <div class="card">
                 <div class="card-header">🎯 SHAP Feature Importance</div>
                 <div class="plot-container">
-                    <img src="images/shap_importance_20260322_183736.png"
+                    <img src="images/07_shap_importance_bar.png"
                          alt="SHAP Importance"
-                         onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
-                </div>
-            </div>
-
-            <!-- 5. Decision Tree -->
-            <div class="card">
-                <div class="card-header">🌳 Decision Tree Surrogate</div>
-                <div class="plot-container">
-                    <img src="images/decision_tree_20260322_183736.png"
-                         alt="Decision Tree Surrogate"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
@@ -255,37 +227,50 @@
         <!-- ── Local XAI ── -->
         <h2 class="section-title">🔍 Local Interpretation (This Prediction)</h2>
         <div class="grid-2">
+
             <div class="card">
                 <div class="card-header">⚡ SHAP Local Waterfall</div>
                 <div class="plot-container">
-                    <img src="images/shap_local_20260322_183736.png"
+                    <img src="images/08_shap_local_20260322_125255.png"
                          alt="SHAP Local"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
+
             <div class="card">
                 <div class="card-header">🔍 LIME Explanation</div>
                 <div class="plot-container">
-                    <img src="images/lime_20260322_183736.png"
+                    <img src="images/09_lime_20260322_125255.png"
                          alt="LIME Explanation"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
+
             <div class="card">
                 <div class="card-header">📊 Individual Feature Breakdown</div>
                 <div class="plot-container">
-                    <img src="images/individual_breakdown_20260322_183736.png"
+                    <img src="images/10_individual_breakdown_20260322_125255.png"
                          alt="Individual Breakdown"
                          onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">🔄 Counterfactual Analysis</div>
+                <div class="plot-container">
+                    <img src="images/11_counterfactual_20260322_125255.png"
+                         alt="Counterfactual"
+                         onerror="this.parentElement.innerHTML='<p class=no-plot>Plot not available</p>'">
+                </div>
+            </div>
+
         </div>
 
     </div><!-- /content -->
 
     <div class="footer">
-        <p>Report generated by Crop Recommendation System</p>
-        <p>Total Plots Generated: 11</p>
+        <p>Report generated by Fertilizer Recommendation System</p>
+        <p>Total Plots Generated: 11/11</p>
         <button class="button" onclick="window.print()">🖨️ Print</button>
         <button class="button" onclick="window.close()">❌ Close</button>
     </div>
